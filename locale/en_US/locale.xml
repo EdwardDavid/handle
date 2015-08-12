@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../locale/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2003-2010 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  *
+  * $Id: locale.xml,v 1.4 2008/06/11 18:55:12 asmecher Exp $
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.pid.description"><![CDATA[The PID plugin allows requesting of Persistent ID for an article.]]></message>
+	<message key="plugins.generic.pid">PID plugin</message>
+	<message key="plugins.generic.pid.settings">Settings</message>
+	<message key="plugins.generic.assignedPid">Assigned PID: </message>
+	<message key="plugins.generic.assignedPurl">Assigned PURL:</message>message>
+
+	<message key="plugins.generic.pidHeading">Request Persistent ID for an article</message>
+	<message key="plugins.generic.form.pidAssignorPath">PID Assignor Path *</message>
+	<message key="plugins.generic.form.pidResolverPath">PID Resolver Path *</message>
+	<message key="plugins.generic.form.pidUsername">PID Username *</message>
+	<message key="plugins.generic.form.pidPassword">PID Password *</message>
+	<message key="plugins.generic.form.pidOrganizationId">PID Organization ID </message>	
+		
+	<message key="plugins.generic.pid.manager.settings.pidResolverPathRequired">PID Resolver Path is required field</message>
+	<message key="plugins.generic.pid.manager.settings.pidAssignorPathRequired">PID Assignor Path is required field</message>
+	<message key="plugins.generic.pid.manager.settings.setPidRetroactively">Set</message>
+	<message key="plugins.generic.pid.manager.settings.setPidRetroactivelyDesc">Set PID for all Published Articles in this Journal : </message>
+	<message key="plugins.generic.pid.manager.info.thereare">There are</message>
+	<message key="plugins.generic.pid.manager.info.numberPulishedArticles">published articles in this journal.</message>
+	<message key="plugins.generic.pid.manager.info.pulishedArticlesNoPid">articles without PID out of</message>
+	<message key="plugins.generic.pid.manager.info.fewMinutes">This may take a few minutes.</message>
+	
+</locale>

@@ -1,0 +1,53 @@
+diff -ruN templates/author/submission/status.tpl plugins/generic/pid/2.2.x/templates/author/submission/status.tpl
+--- templates/author/submission/status.tpl	2009-04-08 13:43:31.000000000 -0600
++++ plugins/generic/pid/2.2.x/templates/author/submission/status.tpl	2011-02-16 14:43:36.000000000 -0700
+@@ -12,6 +12,7 @@
+ <h3>{translate key="common.status"}</h3>
+ 
+ <table width="100%" class="data">
++	{call_hook name="Template::Author::Submission::Status"}
+ 	<tr>
+ 		{assign var="status" value=$submission->getSubmissionStatus()}
+ 		<td width="20%" class="label">{translate key="common.status"}</td>
+diff -ruN templates/sectionEditor/submission/status.tpl plugins/generic/pid/2.2.x/templates/sectionEditor/submission/status.tpl
+--- templates/sectionEditor/submission/status.tpl	2009-04-08 13:43:34.000000000 -0600
++++ plugins/generic/pid/2.2.x/templates/sectionEditor/submission/status.tpl	2011-02-16 14:44:20.000000000 -0700
+@@ -12,6 +12,7 @@
+ <h3>{translate key="common.status"}</h3>
+ 
+ <table width="100%" class="data">
++	{call_hook name="Template::sectionEditor::Submission::Status"}
+ 	<tr>
+ 		{assign var="status" value=$submission->getSubmissionStatus()}
+ 		<td width="20%" class="label">{translate key="common.status"}</td>
+diff -ruN classes/oai/OAI.inc.php plugins/generic/pid/2.2.x/classes/oai/OAI.inc.php
+--- classes/oai/OAI.inc.php	2009-07-15 17:38:08.000000000 -0600
++++ plugins/generic/pid/2.2.x/classes/oai/OAI.inc.php	2011-02-16 14:46:19.000000000 -0700
+@@ -279,6 +279,7 @@
+ 			"\t\t</record>\n" .
+ 			"\t</GetRecord>\n";
+ 
++		HookRegistry::call('OAIDAOinc::_getRecord', array(&$response, &$metadataPrefix, &$record, &$this->params));
+ 		$this->response($response);
+ 	}
+ 
+@@ -566,6 +567,7 @@
+ 
+ 		$response .= "\t</ListRecords>\n";
+ 
++		HookRegistry::call('OAIDAOinc::_listRecords', array(&$response, &$metadataPrefix, &$records, &$this->params));
+ 		$this->response($response);
+ 	}
+ 
+diff -ruN templates/article/article.tpl plugins/generic/pid/2.2.x/article.tpl
+--- templates/article/article.tpl	2012-01-17 12:47:54.000000000 -0700
++++ plugins/generic/pid/2.2.x/article.tpl	2012-01-17 12:32:47.000000000 -0700
+@@ -161,7 +161,7 @@
+ 		{/if}
+ 	{/if}
+ {/if}
+-
++{call_hook name="Template::Article::PID"}
+ {if $comments}
+ <div class="separator"></div>
+ <h4>{translate key="comments.commentsOnArticle"}</h4>

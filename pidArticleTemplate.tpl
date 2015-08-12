@@ -1,0 +1,1 @@
+<br/><br/><b>PID: <a href="{$articlePurl}">{$articlePurl}</a></b>

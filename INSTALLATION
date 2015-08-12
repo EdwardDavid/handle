@@ -1,0 +1,68 @@
+================================
+=== OJS PID Plugin
+=== Author: Igor Leznik <ileznik@ucalgary.ca>
+================================
+
+The PID Plugin allows assigment of a PID, or Permanent IDentifier, to published
+content in OJS so that it can be referred to unambiguously and statically by any
+service supporting Handle PIDs, such as the Synergies Canada website
+<http://www.synergiescanada.org>.
+
+INSTALLATION
+
+You can find your OJS version by looking in Site Administration, or by checking
+the file "dbscripts/xml/version.xml".
+
+1) Extract the plugin.
+  - Enter your OJS installation directory (you should see OJS's index.php there)
+  - Run (your .tar.gz filename may vary):
+     tar xzf /path/to/pid-1.9.x.tar.gz -C plugins/generic
+    This should create the directory plugins/generic/pid, containing the plugin
+    files.
+
+2) Register the plugin (it is probably a good idea to back up your database before doing this)
+  - Enter your OJS installation directory (you should see OJS's index.php there)
+  - Run: (you need PHP CLI package installed)
+     php tools/upgrade.php upgrade
+	
+3) Apply the patch for your version of OJS.
+ - Enter your OJS installation directory (you should see OJS's index.php there)
+ - Depending on your version of OJS:
+    OJS 2.2.x: Run "patch -p0 --dry-run < plugins/generic/pid/2.2.x.diff"
+    OJS 2.3.x: Run "patch -p0 --dry-run < plugins/generic/pid/2.3.x.diff"
+
+   If the patch is successful, run the same command again without the --dry-run
+   option. If the patch fails, you will have to manually edit the files and make
+   the appropriate changes
+  
+4) Add the new SQL table 'pid_resources' to your ojs database.
+ - Enter your OJS installation directory (you should see OJS's index.php there)
+ - Run: (you need PHP CLI package installed)
+    php tools/dbXMLtoSQL.php execute plugins/generic/pid/schema.xml
+
+
+SETUP (complete INSTALLATION steps first)
+
+1) Log in as a Journal Manager
+2) Navigate to User Home > Journal Manager > System Plugins > Generic Plugins
+3) Find the PID Plugin and Enable it
+4) Find the PID Plugin, click Settings, and enter the following:
+  PID Assignor Path: http://handle.synergiescanada.org:8080/axis/services
+  PID Resolver Path: http://hdl.handle.net
+5) Please contact the Synergies Calgary node for the PID username and password
+
+
+USAGE (complete SETUP steps first)
+
+1) Assign PIDs to all articles that have already been published.
+ - Log in as a Journal Manager
+ - Navigate to User Home > Journal Manager > System Plugins > Generic Plugins
+ - Find the PID Plugin; click "Set PID for all Published Articles in this Journal"
+
+2) Ensure that PIDs have been assigned.
+ - Log in as an Editor
+ - Navigate to User Home > Editor
+ - Find a *PUBLISHED* article and view its Summary page
+ - Look for "Assigned PID" and ensure that there is a value.
+
+A PID will be assigned to future articles automatically upon publication.

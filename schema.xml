@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema SYSTEM "../../../lib/pkp/dtd/xmlSchema.dtd">
+
+<!--
+  * schema.xml
+  *
+  * Copyright (c) 2003-2010 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Thesis Abstracts plugin schema in XML.
+  *
+  * $Id: schema.xml,v 1.9 2009/04/08 19:54:42 asmecher Exp $
+  -->
+
+<schema version="0.2">
+
+	<!--
+	 *
+	 * TABLE pid_resources
+	 *
+	 -->
+	<table name="pid_resources">
+		<field name="resource_pid" type="C" size="30">
+			<KEY/>
+		</field>
+		<field name="assoc_id" type="I8">
+			<NOTNULL/>
+		</field>
+		<field name="assoc_type" type="I8">
+			<NOTNULL/>
+		</field>
+		<field name="resource_purl" type="X">
+			<NOTNULL/>
+		</field>
+		<descr>PID resources data.</descr>
+		<index name="assoc_id">
+			<col>assoc_id</col>
+		</index>
+	</table>
+
+</schema>
